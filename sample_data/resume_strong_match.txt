@@ -1,0 +1,17 @@
+Priya Nair
+Backend Engineer
+
+Experience:
+Backend Engineer, FinTechCo (Jan 2021 - Present)
+- Built and maintained REST APIs in Python using FastAPI, serving 2M+ requests/day
+- Designed PostgreSQL schemas and optimized slow queries
+- Containerized all services with Docker and deployed via AWS ECS
+- Mentored 2 junior engineers
+
+Software Engineer, StartupXYZ (Jun 2019 - Dec 2020)
+- Developed internal tools using Flask and SQL
+
+Education:
+B.Tech in Computer Science, IIT Bombay, 2019
+
+Skills: Python, FastAPI, Flask, PostgreSQL, Docker, AWS, REST APIs, Git

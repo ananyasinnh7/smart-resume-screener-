@@ -1,0 +1,8 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+resume_screener.db
+.DS_Store
+node_modules/
+backend/resumelens.db

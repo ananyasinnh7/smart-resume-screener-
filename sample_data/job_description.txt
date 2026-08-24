@@ -1,0 +1,15 @@
+Backend Engineer (Python)
+
+We're looking for a Backend Engineer to join our platform team.
+
+Required:
+- 3+ years of experience building production backend systems
+- Strong Python skills (FastAPI or Django/Flask)
+- Experience with SQL databases (PostgreSQL preferred)
+- Familiarity with Docker and containerized deployments
+- Comfortable working with REST APIs
+
+Nice to have:
+- Experience with AWS
+- Exposure to LLM/AI-powered features
+- Kubernetes experience

@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ResumeLens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Top bar -->
+    <header class="topbar">
+      <div class="wordmark">
+        <svg class="wordmark-mark" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span class="wordmark-text">ResumeLens</span>
+      </div>
+
+      <nav class="tab-switch" id="tabSwitch" role="tablist" aria-label="View switcher">
+        <button class="tab-btn active" id="tabScreenBtn" role="tab" aria-selected="true">Screen Candidates</button>
+        <button class="tab-btn" id="tabInsightsBtn" role="tab" aria-selected="false">Resume Insights</button>
+      </nav>
+
+      <div class="topbar-actions">
+        <button id="historyBtn" class="icon-btn" title="View history" aria-label="View screening history">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v5h5"/><path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"/><path d="M12 7v5l4 2"/></svg>
+        </button>
+        <button id="themeToggle" class="icon-btn" title="Toggle light / dark mode" aria-label="Toggle theme">
+          <svg id="iconSun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg id="iconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button id="settingsBtn" class="icon-btn" title="Settings" aria-label="Open settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ============================================================
+         VIEW 1: Screen Candidates (resume vs job description)
+         ============================================================ -->
+    <main class="layout" id="screenView">
+      <section class="rail" aria-label="Screening input">
+        <div class="rail-block">
+          <label class="field-label" for="jobDescription">Job description</label>
+          <textarea
+            id="jobDescription"
+            placeholder="Paste the job description here — required skills, experience level, nice-to-haves..."
+            rows="10"
+          ></textarea>
+        </div>
+
+        <div class="rail-block">
+          <div class="field-label-row">
+            <label class="field-label">Resumes</label>
+            <span class="field-hint" id="fileCountHint">No files selected</span>
+          </div>
+          <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Upload resume files">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <p><strong>Drop resumes here</strong> or click to browse</p>
+            <p class="dropzone-sub">PDF, DOCX, or TXT · multiple files = batch shortlist</p>
+            <input id="fileInput" type="file" multiple accept=".pdf,.docx,.txt,.md" hidden />
+          </div>
+          <ul id="fileList" class="file-list"></ul>
+          <p class="field-hint" id="appendHint" style="display:none">New resumes are added to your current results below — nothing gets cleared.</p>
+        </div>
+
+        <button id="screenBtn" class="primary-btn" disabled>
+          <span id="screenBtnLabel">Screen candidates</span>
+          <div id="screenBtnSpinner" class="spinner" style="display:none"></div>
+        </button>
+        <p class="field-hint" style="text-align:center; margin-top:-8px;">or press <kbd>Ctrl/Cmd</kbd> + <kbd>Enter</kbd></p>
+
+        <p id="errorBanner" class="error-banner" style="display:none"></p>
+      </section>
+
+      <section class="feed" aria-label="Screening results">
+        <div class="feed-header">
+          <h1 id="feedTitle">Results</h1>
+          <div class="feed-actions" id="feedActions" style="display:none">
+            <button id="sortBtn" class="ghost-btn">Sort: Score ↓</button>
+            <button id="exportBtn" class="ghost-btn">Export CSV</button>
+            <button id="pruneBtn" class="ghost-btn">Remove not-fit</button>
+            <button id="clearBtn" class="ghost-btn">Clear all</button>
+          </div>
+        </div>
+
+        <div class="filter-bar" id="filterBar" style="display:none">
+          <input id="searchInput" type="text" placeholder="Filter by name or skill…" class="search-input" />
+          <div class="threshold-control">
+            <label for="thresholdSlider">Min score: <span id="thresholdValue">0</span></label>
+            <input id="thresholdSlider" type="range" min="0" max="10" value="0" step="1" />
+          </div>
+          <button id="shortlistOnlyBtn" class="ghost-btn toggle-btn" aria-pressed="false">★ Shortlisted only</button>
+          <button id="hideNotFitBtn" class="ghost-btn toggle-btn" aria-pressed="false">Hide not-fit</button>
+        </div>
+
+        <div class="stats-bar" id="statsBar" style="display:none"></div>
+
+        <div id="progressBar" class="progress-bar" style="display:none">
+          <div class="progress-bar-fill" id="progressBarFill"></div>
+          <span id="progressBarLabel" class="progress-bar-label"></span>
+        </div>
+
+        <div id="emptyState" class="empty-state">
+          <div class="empty-dial" aria-hidden="true">
+            <svg viewBox="0 0 120 120" width="72" height="72">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="var(--line)" stroke-width="10"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="var(--accent)" stroke-width="10"
+                stroke-linecap="round" stroke-dasharray="235 314.159" transform="rotate(-90 60 60)" opacity="0.55"/>
+            </svg>
+          </div>
+          <h2>No screenings yet</h2>
+          <p>Paste a job description, upload one or more resumes, and run a screening to see match scores here.</p>
+        </div>
+
+        <div id="noMatchState" class="empty-state" style="display:none">
+          <h2>No candidates match these filters</h2>
+          <p>Try lowering the minimum score or clearing the search.</p>
+        </div>
+
+        <div id="resultsContainer" class="results-container"></div>
+      </section>
+    </main>
+
+    <!-- ============================================================
+         VIEW 2: Resume Insights (standalone resume feedback)
+         ============================================================ -->
+    <main class="layout" id="insightsView" style="display:none">
+      <section class="rail" aria-label="Insights input">
+        <div class="rail-block">
+          <p class="insights-intro">Get honest, specific feedback on your resume as a document — no job description needed. ResumeLens will flag weak bullet points, missing sections, and ATS-friendliness issues.</p>
+        </div>
+
+        <div class="rail-block">
+          <div class="field-label-row">
+            <label class="field-label">Your resume</label>
+            <span class="field-hint" id="insightsFileHint">No file selected</span>
+          </div>
+          <div id="insightsDropzone" class="dropzone" tabindex="0" role="button" aria-label="Upload your resume">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <p><strong>Drop your resume here</strong> or click to browse</p>
+            <p class="dropzone-sub">PDF, DOCX, or TXT · one file at a time</p>
+            <input id="insightsFileInput" type="file" accept=".pdf,.docx,.txt,.md" hidden />
+          </div>
+          <ul id="insightsFileList" class="file-list"></ul>
+        </div>
+
+        <button id="insightsBtn" class="primary-btn" disabled>
+          <span id="insightsBtnLabel">Analyze my resume</span>
+          <div id="insightsBtnSpinner" class="spinner" style="display:none"></div>
+        </button>
+
+        <p id="insightsErrorBanner" class="error-banner" style="display:none"></p>
+      </section>
+
+      <section class="feed" aria-label="Resume insights results">
+        <div class="feed-header">
+          <h1>Your resume, decoded</h1>
+        </div>
+
+        <div id="insightsEmptyState" class="empty-state">
+          <div class="empty-dial" aria-hidden="true">
+            <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.4" opacity="0.55"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h2>No resume analyzed yet</h2>
+          <p>Upload your resume and get a breakdown of what's working, what's not, and exactly how to fix it.</p>
+        </div>
+
+        <div id="insightsResultContainer"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Settings modal -->
+  <div id="settingsModal" class="modal-overlay" style="display:none">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <div class="modal-header">
+        <h2 id="settingsTitle">Settings</h2>
+        <button class="icon-btn" id="closeSettingsBtn" aria-label="Close settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label class="field-label" for="apiBaseInput">Backend API URL</label>
+        <input id="apiBaseInput" type="text" placeholder="http://localhost:8000" />
+        <p class="field-hint">
+          Your Groq API key lives in the backend's <code>.env</code> file and never touches this page.
+          This URL just tells the dashboard where your FastAPI server is running.
+        </p>
+        <button id="testConnectionBtn" class="ghost-btn" style="margin-top: 8px;">Test connection</button>
+        <p id="connectionStatus" class="field-hint"></p>
+
+        <label class="field-label" for="modelSelect" style="margin-top: 16px;">Model</label>
+        <select id="modelSelect">
+          <option value="">Backend default (from .env)</option>
+          <option value="openai/gpt-oss-120b">GPT-OSS 120B — recommended</option>
+          <option value="openai/gpt-oss-20b">GPT-OSS 20B — fastest, cheapest</option>
+        </select>
+        <p class="field-hint">All models run on Groq. Applies to new screenings and insights runs only.</p>
+      </div>
+      <div class="modal-footer">
+        <button id="saveSettingsBtn" class="primary-btn">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- History modal -->
+  <div id="historyModal" class="modal-overlay" style="display:none">
+    <div class="modal modal-wide" role="dialog" aria-modal="true" aria-labelledby="historyTitle">
+      <div class="modal-header">
+        <h2 id="historyTitle">Screening history</h2>
+        <button class="icon-btn" id="closeHistoryBtn" aria-label="Close history">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="historyContent">Loading…</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

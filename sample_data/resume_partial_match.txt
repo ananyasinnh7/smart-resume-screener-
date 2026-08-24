@@ -1,0 +1,13 @@
+Arjun Mehta
+Frontend Developer
+
+Experience:
+Frontend Developer, WebCo (Mar 2022 - Present)
+- Built React dashboards consuming internal REST APIs
+- Some exposure to Node.js for small backend scripts
+- Worked with a MySQL database for reporting features
+
+Education:
+B.Sc in Information Technology, Pune University, 2021
+
+Skills: JavaScript, React, Node.js, MySQL, HTML, CSS
