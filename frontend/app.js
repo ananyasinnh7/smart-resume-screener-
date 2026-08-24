@@ -9,7 +9,7 @@
 // ============================================================
 
 const DEFAULTS = {
-  apiBase: "http://localhost:8000",
+  apiBase: "https://smart-resume-screener-backend-oj63.onrender.com",
 };
 
 // ---------- State ----------
