@@ -13,6 +13,17 @@ It has two modes:
 
 ---
 
+
+
+
+
+VIDEO:
+
+https://github.com/user-attachments/assets/67924dbf-03c3-4aa2-825f-0f7c63a8cc8a
+
+
+
+
 ## Project Structure
 
 ```
