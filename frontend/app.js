@@ -410,17 +410,24 @@ function recBadgeClass(recommendation) {
   return "rec-consider";
 }
 
-function dialSvg(score) {
+function dialSvg(score, uid) {
   const radius = 22;
   const circumference = 2 * Math.PI * radius;
   const fraction = Math.max(0, Math.min(10, score)) / 10;
   const dash = circumference * fraction;
   const band = scoreBand(score);
+  const gradId = `dialGrad-${uid}`;
   return `
     <svg viewBox="0 0 56 56" width="56" height="56">
+      <defs>
+        <linearGradient id="${gradId}" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="${band.color}" />
+          <stop offset="100%" stop-color="var(--score-${band.key}-alt)" />
+        </linearGradient>
+      </defs>
       <circle class="card-dial-track" cx="28" cy="28" r="${radius}"></circle>
       <circle class="card-dial-fill" cx="28" cy="28" r="${radius}"
-        stroke="${band.color}"
+        stroke="url(#${gradId})"
         stroke-dasharray="${dash.toFixed(2)} ${circumference.toFixed(2)}"></circle>
     </svg>
     <div class="card-dial-number" style="color:${band.color}">${score}</div>
@@ -458,12 +465,17 @@ function renderStatsBar(filtered) {
   const notFitCount = state.results.filter((r) => r.match.recommendation === "Not a fit").length;
 
   el.statsBar.innerHTML = `
-    <div class="stat-item"><span class="stat-value">${state.results.length}</span><span class="stat-label">Screened</span></div>
-    <div class="stat-item"><span class="stat-value">${avg}</span><span class="stat-label">Avg score</span></div>
-    <div class="stat-item"><span class="stat-value" style="font-size:14px">${escapeHtml(topName)}</span><span class="stat-label">Top pick (${top.match.score}/10)</span></div>
-    <div class="stat-item"><span class="stat-value">${starredCount}</span><span class="stat-label">Shortlisted</span></div>
-    <div class="stat-item"><span class="stat-value" style="color:var(--score-low)">${notFitCount}</span><span class="stat-label">Not a fit</span></div>
-    <div class="stat-item"><span class="stat-value">${filtered.length}</span><span class="stat-label">Showing</span></div>
+    <div class="stats-hero-main">
+      <span class="stats-hero-eyebrow">Screening summary</span>
+      <h3 class="stats-hero-title">${escapeHtml(topName)} leads the pack — ${top.match.score}/10</h3>
+    </div>
+    <div class="stats-hero-chips">
+      <div class="stat-chip"><span class="stat-chip-value">${state.results.length}</span><span class="stat-chip-label">Screened</span></div>
+      <div class="stat-chip"><span class="stat-chip-value">${avg}</span><span class="stat-chip-label">Avg score</span></div>
+      <div class="stat-chip"><span class="stat-chip-value">${starredCount}</span><span class="stat-chip-label">Shortlisted</span></div>
+      <div class="stat-chip"><span class="stat-chip-value">${notFitCount}</span><span class="stat-chip-label">Not a fit</span></div>
+      <div class="stat-chip"><span class="stat-chip-value">${filtered.length}</span><span class="stat-chip-label">Showing</span></div>
+    </div>
   `;
 }
 
@@ -558,7 +570,7 @@ function renderCard(result) {
   return `
     <article class="card">
       <div class="card-top">
-        <div class="card-dial">${dialSvg(match.score)}</div>
+        <div class="card-dial">${dialSvg(match.score, index)}</div>
         <div class="card-identity">
           <p class="card-name">${escapeHtml(name)}</p>
           <p class="card-meta">${escapeHtml(experience)}</p>

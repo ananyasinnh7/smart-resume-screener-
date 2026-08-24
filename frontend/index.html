@@ -95,8 +95,19 @@
             <label for="thresholdSlider">Min score: <span id="thresholdValue">0</span></label>
             <input id="thresholdSlider" type="range" min="0" max="10" value="0" step="1" />
           </div>
-          <button id="shortlistOnlyBtn" class="ghost-btn toggle-btn" aria-pressed="false">★ Shortlisted only</button>
-          <button id="hideNotFitBtn" class="ghost-btn toggle-btn" aria-pressed="false">Hide not-fit</button>
+          <div class="filter-toggle-group">
+            <button id="shortlistOnlyBtn" class="toggle-btn" aria-pressed="false">
+              <svg class="toggle-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span class="toggle-label">Shortlisted</span>
+              <span class="toggle-switch" aria-hidden="true"><span class="toggle-knob"></span></span>
+            </button>
+            <span class="filter-toggle-divider"></span>
+            <button id="hideNotFitBtn" class="toggle-btn" aria-pressed="false">
+              <svg class="toggle-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a21.8 21.8 0 0 1 5.06-6.06M9.9 4.24A10.94 10.94 0 0 1 12 4c7 0 11 8 11 8a21.77 21.77 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+              <span class="toggle-label">Hide not-fit</span>
+              <span class="toggle-switch" aria-hidden="true"><span class="toggle-knob"></span></span>
+            </button>
+          </div>
         </div>
 
         <div class="stats-bar" id="statsBar" style="display:none"></div>

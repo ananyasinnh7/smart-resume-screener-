@@ -1,67 +1,95 @@
 /* ============================================================
    Design tokens
-   Palette: white/near-black surfaces, confident indigo accent,
-   traffic-light score bands (this is a scoring product — the
-   score band colors ARE the design system, not decoration).
+   Palette: vibrant pink→violet brand gradient over clean
+   surfaces, traffic-light score bands (this is a scoring
+   product — the score band colors ARE the design system).
    ============================================================ */
 :root {
-  --bg: #ffffff;
-  --surface: #f7f8fa;
+  --bg: #fffcfe;
+  --surface: #faf6fb;
   --surface-raised: #ffffff;
-  --ink: #12151c;
-  --ink-muted: #5b6472;
-  --ink-faint: #8991a0;
-  --line: #e6e8ec;
-  --line-strong: #d3d7de;
-  --accent: #3454d1;
-  --accent-hover: #2943b3;
+  --ink: #1a1523;
+  --ink-muted: #665f73;
+  --ink-faint: #948da3;
+  --line: #ece5f0;
+  --line-strong: #dcd2e3;
+  --accent: #8b5cf6;
+  --accent-hover: #7c3aed;
   --accent-ink: #ffffff;
-  --accent-soft: rgba(52, 84, 209, 0.08);
+  --accent-soft: rgba(139, 92, 246, 0.09);
+  --accent2: #ec4899;
+  --accent2-soft: rgba(236, 72, 153, 0.09);
+  --brand-gradient: linear-gradient(135deg, #ec4899 0%, #a855f7 55%, #7c3aed 100%);
+  --brand-gradient-soft: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(124, 58, 237, 0.1));
+  --brand-glow: 0 8px 24px rgba(168, 85, 247, 0.28);
 
   --score-high: #17835a;
+  --score-high-alt: #22c55e;
   --score-high-bg: rgba(23, 131, 90, 0.1);
-  --score-mid: #a3690a;
-  --score-mid-bg: rgba(163, 105, 10, 0.1);
+  --score-mid: #b45309;
+  --score-mid-alt: #f97316;
+  --score-mid-bg: rgba(180, 83, 9, 0.1);
   --score-low: #c23b3b;
+  --score-low-alt: #f43f5e;
   --score-low-bg: rgba(194, 59, 59, 0.1);
 
-  --shadow-sm: 0 1px 2px rgba(18, 21, 28, 0.04), 0 1px 1px rgba(18, 21, 28, 0.03);
-  --shadow-md: 0 4px 16px rgba(18, 21, 28, 0.06), 0 1px 2px rgba(18, 21, 28, 0.04);
-  --shadow-lg: 0 12px 32px rgba(18, 21, 28, 0.12);
+  --shadow-sm: 0 1px 2px rgba(26, 21, 35, 0.05), 0 1px 1px rgba(26, 21, 35, 0.03);
+  --shadow-md: 0 4px 18px rgba(26, 21, 35, 0.07), 0 1px 2px rgba(26, 21, 35, 0.04);
+  --shadow-lg: 0 16px 40px rgba(26, 21, 35, 0.14);
 
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
+  --radius-sm: 9px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  /* Switch component reuses the brand gradient */
+  --switch-gradient: var(--brand-gradient);
+  --switch-off: var(--line-strong);
+  --switch-active-ink: #7c3aed;
+  --switch-active-bg: var(--brand-gradient-soft);
+  --switch-active-border: rgba(168, 85, 247, 0.35);
 }
 
 [data-theme="dark"] {
-  --bg: #0b0d12;
-  --surface: #12151c;
-  --surface-raised: #171b24;
-  --ink: #f2f4f8;
-  --ink-muted: #9aa3b2;
-  --ink-faint: #626b7a;
-  --line: #242a36;
-  --line-strong: #313847;
-  --accent: #6c8cff;
-  --accent-hover: #8aa3ff;
-  --accent-ink: #0b0d12;
-  --accent-soft: rgba(108, 140, 255, 0.12);
+  --bg: #100b18;
+  --surface: #17111f;
+  --surface-raised: #1d1628;
+  --ink: #f4f1f8;
+  --ink-muted: #a99fb8;
+  --ink-faint: #6f6680;
+  --line: #2c2338;
+  --line-strong: #3a2e49;
+  --accent: #a78bfa;
+  --accent-hover: #c4b5fd;
+  --accent-ink: #150e20;
+  --accent-soft: rgba(167, 139, 250, 0.14);
+  --accent2: #f472b6;
+  --accent2-soft: rgba(244, 114, 182, 0.14);
+  --brand-gradient: linear-gradient(135deg, #f472b6 0%, #c084fc 55%, #a78bfa 100%);
+  --brand-gradient-soft: linear-gradient(135deg, rgba(244, 114, 182, 0.16), rgba(167, 139, 250, 0.16));
+  --brand-glow: 0 8px 28px rgba(192, 132, 252, 0.35);
 
   --score-high: #3ec98b;
+  --score-high-alt: #4ade80;
   --score-high-bg: rgba(62, 201, 139, 0.14);
   --score-mid: #e0a83e;
+  --score-mid-alt: #fb923c;
   --score-mid-bg: rgba(224, 168, 62, 0.14);
   --score-low: #ee6a6a;
+  --score-low-alt: #fb7185;
   --score-low-bg: rgba(238, 106, 106, 0.14);
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+
+  --switch-gradient: var(--brand-gradient);
+  --switch-active-ink: #c084fc;
+  --switch-active-bg: var(--brand-gradient-soft);
+  --switch-active-border: rgba(192, 132, 252, 0.4);
 }
 
 /* ============================================================
@@ -72,7 +100,11 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: var(--bg);
+  background:
+    radial-gradient(560px 360px at 8% -6%, rgba(236, 72, 153, 0.08), transparent 60%),
+    radial-gradient(620px 420px at 100% 0%, rgba(139, 92, 246, 0.09), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
   color: var(--ink);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
@@ -177,7 +209,7 @@ select {
   transition: background 0.15s ease, color 0.15s ease;
 }
 
-.icon-btn:hover { background: var(--surface); color: var(--ink); }
+.icon-btn:hover { background: var(--accent-soft); color: var(--accent); }
 
 /* ============================================================
    Layout
@@ -236,9 +268,11 @@ textarea#jobDescription { min-height: 180px; line-height: 1.5; }
 }
 
 .dropzone:hover, .dropzone.dragover {
-  border-color: var(--accent);
-  background: var(--accent-soft);
+  border-color: var(--accent2);
+  background: var(--brand-gradient-soft);
 }
+
+.dropzone:hover svg, .dropzone.dragover svg { color: var(--accent2); }
 
 .dropzone svg { margin-bottom: 6px; }
 
@@ -290,8 +324,8 @@ textarea#jobDescription { min-height: 180px; line-height: 1.5; }
    Buttons
    ============================================================ */
 .primary-btn {
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: var(--brand-gradient);
+  color: #ffffff;
   font-weight: 600;
   font-size: 14px;
   padding: 12px 18px;
@@ -300,12 +334,13 @@ textarea#jobDescription { min-height: 180px; line-height: 1.5; }
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: background 0.15s ease, transform 0.1s ease, opacity 0.15s ease;
+  box-shadow: var(--brand-glow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
 }
 
-.primary-btn:hover:not(:disabled) { background: var(--accent-hover); }
+.primary-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 12px 30px rgba(168, 85, 247, 0.36); }
 .primary-btn:active:not(:disabled) { transform: scale(0.98); }
-.primary-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.primary-btn:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
 
 .ghost-btn {
   border: 1px solid var(--line);
@@ -394,25 +429,130 @@ textarea#jobDescription { min-height: 180px; line-height: 1.5; }
   accent-color: var(--accent);
 }
 
+.filter-toggle-group {
+  display: flex;
+  align-items: center;
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-toggle-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--line);
+  flex-shrink: 0;
+}
+
+.toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: none;
+  color: var(--ink-muted);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.toggle-icon { flex-shrink: 0; opacity: 0.8; }
+
+.toggle-btn:hover { color: var(--ink); background: var(--surface); }
+
 .toggle-btn.active {
-  background: var(--accent-soft);
-  border-color: var(--accent);
-  color: var(--accent);
+  background: var(--switch-active-bg);
+  color: var(--switch-active-ink);
+}
+
+/* Pill switch: track + sliding knob, gradient only when on */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--switch-off);
+  flex-shrink: 0;
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.toggle-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(18, 21, 28, 0.35);
+  transition: left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toggle-btn.active .toggle-switch {
+  background: var(--switch-gradient);
+  box-shadow: 0 0 0 4px var(--switch-active-bg);
+}
+
+.toggle-btn.active .toggle-knob {
+  left: 16px;
 }
 
 /* ============================================================
-   Summary stats bar
+   Summary stats hero banner (signature element)
    ============================================================ */
 .stats-bar {
   display: flex;
-  gap: 20px;
-  padding: 12px 16px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  margin-bottom: 14px;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 22px;
+  background: var(--brand-gradient);
+  border-radius: var(--radius-lg);
+  margin-bottom: 16px;
+  box-shadow: var(--brand-glow);
+  color: #ffffff;
+}
+
+.stats-hero-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.75);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.stats-hero-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: #ffffff;
+}
+
+.stats-hero-chips {
+  display: flex;
+  gap: 10px;
   flex-wrap: wrap;
 }
+
+.stat-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  backdrop-filter: blur(4px);
+}
+
+.stat-chip-value { font-family: var(--font-mono); font-weight: 700; font-size: 15px; color: #ffffff; }
+.stat-chip-label { font-size: 10.5px; color: rgba(255, 255, 255, 0.8); text-transform: uppercase; letter-spacing: 0.03em; }
 
 .stat-item { display: flex; flex-direction: column; gap: 1px; }
 .stat-value { font-family: var(--font-mono); font-weight: 700; font-size: 16px; }
@@ -468,15 +608,28 @@ textarea#jobDescription { min-height: 180px; line-height: 1.5; }
    Candidate card
    ============================================================ */
 .card {
+  position: relative;
   background: var(--surface-raised);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  padding: 18px 20px;
+  padding: 20px 20px 18px;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.15s ease;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.card:hover { box-shadow: var(--shadow-md); }
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--brand-gradient);
+  opacity: 0.85;
+}
+
+.card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
 
 .card-top {
   display: flex;
@@ -859,8 +1012,9 @@ textarea#jobDescription { min-height: 180px; line-height: 1.5; }
 .tab-btn:hover { color: var(--ink); }
 
 .tab-btn.active {
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: var(--brand-gradient);
+  color: #ffffff;
+  box-shadow: var(--brand-glow);
 }
 
 @media (max-width: 720px) {
@@ -870,11 +1024,13 @@ textarea#jobDescription { min-height: 180px; line-height: 1.5; }
 
 /* Accent underline on the wordmark for a bit more personality */
 .wordmark-text {
-  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 60%, #8a5cff));
+  background: var(--brand-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.wordmark-mark { color: var(--accent2); }
 
 /* ============================================================
    Resume Insights view
@@ -912,6 +1068,7 @@ textarea#jobDescription { min-height: 180px; line-height: 1.5; }
   align-items: center;
   justify-content: center;
   transition: background 0.6s ease;
+  filter: drop-shadow(0 4px 10px rgba(26, 21, 35, 0.18));
 }
 
 .insights-score-ring-inner {
