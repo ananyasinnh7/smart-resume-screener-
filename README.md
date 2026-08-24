@@ -19,7 +19,11 @@ It has two modes:
 
 VIDEO:
 
-https://github.com/user-attachments/assets/67924dbf-03c3-4aa2-825f-0f7c63a8cc8a
+
+
+https://github.com/user-attachments/assets/70354266-d788-4e31-a419-d05c42c651d6
+
+
 
 
 
